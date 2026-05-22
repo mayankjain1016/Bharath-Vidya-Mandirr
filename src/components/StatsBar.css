@@ -45,15 +45,17 @@
 }
 
 @media (max-width: 900px) {
-  .stats-inner { grid-template-columns: repeat(3, 1fr); }
+  .stats-inner { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .stat-item:nth-child(4)::before,
   .stat-item:nth-child(1)::before { display: none; }
+  .stat-item { padding: 0.9rem 0.75rem; }
 }
 
 @media (max-width: 600px) {
-  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .stats-bar { padding: 2rem 0; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
   .stat-item::before { display: none !important; }
-  .stat-item { padding: 1rem 0.5rem; }
-  .stat-num { font-size: 1.6rem; }
-  .stat-label { font-size: 0.72rem; }
+  .stat-item { padding: 0.8rem 0.5rem; }
+  .stat-num { font-size: 1.5rem; }
+  .stat-label { font-size: 0.7rem; }
 }

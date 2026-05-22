@@ -32,7 +32,7 @@
 .nav-brand:focus-visible { outline: 3px solid var(--gold); border-radius: 4px; }
 
 .nav-logo-img {
-  height: 52px;
+  height: 80px;
   width: auto;
   object-fit: contain;
 }
@@ -159,7 +159,7 @@
 }
 
 @media (max-width: 480px) {
-  .nav-logo-img { height: 42px; }
+  .nav-logo-img { height: 60px; }
   .nav-school-name { font-size: 0.95rem; }
   .nav-school-sub { font-size: 0.6rem; }
 }

@@ -88,12 +88,6 @@ export default function IntegratedCoaching() {
               4 Years of Stellar Results
             </div>
           </div>
-
-          <img
-            src="https://placehold.co/500x260/1A3A5C/FFFFFF?text=Coaching+Visual"
-            alt="Integrated coaching visual"
-            className="coaching-img"
-          />
         </motion.div>
 
       </div>

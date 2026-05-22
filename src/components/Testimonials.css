@@ -29,6 +29,9 @@
   position: relative;
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: default;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 .testi-card:hover {
   transform: translateY(-6px);

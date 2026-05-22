@@ -36,6 +36,9 @@
   box-shadow: 0 2px 10px rgba(11,31,58,0.06);
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: default;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .award-card:hover {
@@ -78,10 +81,21 @@
 }
 
 @media (max-width: 1024px) {
-  .awards-grid { grid-template-columns: repeat(2, 1fr); }
+  .awards-recognition { padding: 5rem 0; }
+  .awards-grid { gap: 2rem; }
+}
+
+@media (max-width: 768px) {
+  .awards-recognition { padding: 4rem 0; }
+  .awards-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .award-card { padding: 1.75rem 1.4rem; }
 }
 
 @media (max-width: 600px) {
-  .awards { padding: 4rem 0; }
+  .awards-recognition { padding: 3rem 0; }
   .awards-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+  .award-card { padding: 1.5rem 1.2rem; }
+  .award-icon { width: 54px; height: 54px; }
+  .award-title { font-size: 0.95rem; }
+  .award-desc { font-size: 0.82rem; }
 }

@@ -29,6 +29,8 @@
   flex-shrink: 0;
   cursor: default;
   transition: transform 0.2s, box-shadow 0.2s;
+  max-width: 100%;
+  min-width: 220px;
 }
 .ach-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.15); }
 
@@ -51,4 +53,20 @@
   color: var(--teal);
   font-weight: 600;
   margin: 0;
+}
+
+@media (max-width: 768px) {
+  .ach-banner { padding: 1.5rem 0; }
+  .ach-card { padding: 0.65rem 1.2rem; min-width: 200px; gap: 0.65rem; }
+  .ach-icon svg { width: 20px; height: 20px; }
+  .ach-title { font-size: 0.82rem; }
+  .ach-sub { font-size: 0.7rem; }
+}
+
+@media (max-width: 480px) {
+  .ach-banner { padding: 1.2rem 0; }
+  .ach-card { padding: 0.6rem 1rem; }
+  .ach-icon svg { width: 18px; height: 18px; }
+  .ach-title { font-size: 0.78rem; }
+  .ach-sub { font-size: 0.68rem; }
 }

@@ -39,6 +39,9 @@
   border: 1px solid var(--gold);
   border-radius: 10px;
   padding: 1.4rem 1.5rem;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .stage-badge {
@@ -84,6 +87,8 @@
   border: 1px solid rgba(201,146,42,0.35);
   border-radius: 14px;
   padding: 1.8rem;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .coaching-card-label {
@@ -167,16 +172,36 @@
 }
 
 /* ── Responsive ── */
+@media (max-width: 1024px) {
+  .coaching { padding: 5rem 0; }
+  .coaching-inner { gap: 3rem; }
+}
+
 @media (max-width: 900px) {
-  .coaching-inner {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
+  .coaching-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+@media (max-width: 600px) {
+  .coaching { padding: 3.5rem 0; }
+  .coaching-inner { gap: 2rem; }
+  .coaching-heading { font-size: 1.6rem; }
+  .coaching-desc { font-size: 0.92rem; }
+  .stage-card { padding: 1rem; gap: 1rem; }
+  .stage-card h4 { font-size: 0.9rem; }
+  .stage-card p { font-size: 0.8rem; }
+  .subject-grid { gap: 0.6rem; }
+  .subject-chip { padding: 0.5rem 0.65rem; font-size: 0.78rem; }
 }
 
 @media (max-width: 480px) {
-  .coaching { padding: 4rem 0; }
-  .stage-card { flex-direction: column; gap: 0.8rem; }
-  .timeline { flex-direction: column; }
+  .coaching { padding: 3rem 0; }
+  .coaching-inner { gap: 1.5rem; }
+  .stage-card { flex-direction: column; gap: 0.75rem; padding: 0.9rem; }
+  .timeline { flex-direction: column; gap: 0.5rem; }
   .tl-arrow { transform: rotate(90deg); }
+  .coaching-card { padding: 1.2rem; }
+  .coaching-badge { font-size: 0.75rem; padding: 0.5rem 0.75rem; }
+  .subject-chip { padding: 0.45rem 0.6rem; font-size: 0.75rem; }
+  .tl-classes { font-size: 0.88rem; }
+  .tl-name { font-size: 0.68rem; }
 }

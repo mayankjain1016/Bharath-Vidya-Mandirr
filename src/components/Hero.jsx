@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, MapPin, GraduationCap } from 'lucide-react'
+import heroImg from '../assets/hero1.jpeg'
 import './Hero.css'
 
 const fadeUp = (delay = 0) => ({
@@ -52,7 +53,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <img
-            src="https://placehold.co/600x700/1A3A5C/FFFFFF?text=Student+Image"
+            src={heroImg}
             alt="Student studying at Bharath Vidya Mandir"
             className="hero-img floating"
           />

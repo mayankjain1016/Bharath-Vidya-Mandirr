@@ -37,6 +37,9 @@
   border-left: 4px solid transparent;
   transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
   cursor: default;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .wcu-card:hover {
@@ -71,11 +74,22 @@
 }
 
 @media (max-width: 1024px) {
-  .wcu-grid { grid-template-columns: repeat(2, 1fr); }
+  .wcu { padding: 5rem 0; }
+  .wcu-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+}
+
+@media (max-width: 768px) {
+  .wcu { padding: 4rem 0; }
+  .wcu-header { margin-bottom: 2.5rem; }
+  .wcu-grid { gap: 1.2rem; }
+  .wcu-card { padding: 1.8rem 1.5rem; }
 }
 
 @media (max-width: 600px) {
-  .wcu { padding: 4rem 0; }
-  .wcu-grid { grid-template-columns: 1fr; gap: 1.2rem; }
-  .wcu-card { padding: 1.6rem 1.4rem; }
+  .wcu { padding: 3rem 0; }
+  .wcu-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .wcu-card { padding: 1.5rem 1.2rem; }
+  .wcu-icon { width: 50px; height: 50px; }
+  .wcu-card h3 { font-size: 0.98rem; }
+  .wcu-card p { font-size: 0.88rem; }
 }
