@@ -1,67 +1,96 @@
-import { motion } from 'framer-motion'
-import { ArrowRight, MapPin, GraduationCap } from 'lucide-react'
-import heroImg from '../assets/hero1.jpeg'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import './Hero.css'
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, delay, ease: 'easeOut' },
-})
+// Import images from Hero_img folder
+import img1 from '../assets/Hero_img/02890490-a26e-4e4a-98f5-aa1503d3bb04.jfif'
+import img2 from '../assets/Hero_img/547db796-7c2f-44ee-a01c-e99ce0215f8e.jfif'
+import img3 from '../assets/Hero_img/69230d24-c1c8-47de-b362-b775c59084fa.jfif'
+import img4 from '../assets/Hero_img/71ba738a-7814-4518-8b00-ebe4c11ce8c0.jfif'
+import img5 from '../assets/Hero_img/768e614b-c51d-4f95-a26d-c5787018fcdf.jfif'
+import img6 from '../assets/Hero_img/a96d7212-b262-4310-b895-36a87a0d6336.jfif'
+import img7 from '../assets/Hero_img/f0502d82-92f8-485f-ba16-15f19cfaf921.jfif'
+
+const slides = [
+  { id: 1, image: img1 },
+  { id: 2, image: img2 },
+  { id: 3, image: img3 },
+  { id: 4, image: img4 },
+  { id: 5, image: img5 },
+  { id: 6, image: img6 },
+  { id: 7, image: img7 },
+]
 
 export default function Hero({ onEnquireClick }) {
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 6000)
+
+    return () => clearInterval(timer)
+  }, [])
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+  }
+
   return (
-    <section className="hero">
-      {/* Radial gradient overlay */}
-      <div className="hero-bg" />
-
-      <div className="container hero-inner">
-        {/* ── Left: Text ── */}
-        <div className="hero-text">
-          <motion.span className="section-tag hero-tag" {...fadeUp(0.1)}>
-            <MapPin size={13} style={{ display: 'inline', marginRight: 4 }} />
-            Tenkasi's Premier School
-          </motion.span>
-
-          <motion.h1 className="hero-heading" {...fadeUp(0.25)}>
-            Shaping Tomorrow's<br />Leaders Today
-          </motion.h1>
-
-          <motion.p className="hero-sub" {...fadeUp(0.45)}>
-            Where academic excellence meets holistic development — preparing students
-            for NEET, JEE &amp; beyond since decades.
-          </motion.p>
-
-          <motion.div className="hero-btns" {...fadeUp(0.6)}>
-            <button onClick={onEnquireClick} className="btn btn-teal">
-              Book a Campus Tour <ArrowRight size={17} />
-            </button>
-            <a href="#about" className="btn btn-outline-white">Learn More</a>
-          </motion.div>
-
-          <motion.p className="hero-partner" {...fadeUp(0.75)}>
-            <GraduationCap size={16} style={{ display: 'inline', marginRight: 6 }} />
-            Integrated Coaching in partnership with <strong>Seekers Institute, Trichy</strong>
-          </motion.p>
-        </div>
-
-        {/* ── Right: Image ── */}
+    <section className="hero-slider">
+      <AnimatePresence initial={false}>
         <motion.div
-          className="hero-img-wrap"
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          key={currentSlide}
+          className="hero-slide"
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 1.2, ease: 'easeInOut' }}
         >
-          <img
-            src={heroImg}
-            alt="Student studying at Bharath Vidya Mandir"
-            className="hero-img floating"
-          />
-          <div className="hero-img-badge">
-            <span className="badge-num">4+</span>
-            <span className="badge-label">Years of Stellar Results</span>
+          <div className="hero-slide-bg">
+            <img src={slides[currentSlide].image} alt="Bharath Vidya Mandir" />
+            <div className="hero-overlay" />
+          </div>
+
+          <div className="container hero-content">
+            <div className="hero-text">
+              <h1 className="hero-title">Shaping Tomorrow's Leaders Today</h1>
+              <p className="hero-subtitle">Where academic excellence meets holistic development — preparing students for NEET, JEE & beyond since decades.</p>
+              
+              <div className="hero-buttons">
+                <button onClick={onEnquireClick} className="btn btn-teal">
+                  Campus Tour <ArrowRight size={17} />
+                </button>
+                <a href="#about" className="btn btn-outline-white">Learn More</a>
+              </div>
+            </div>
           </div>
         </motion.div>
+      </AnimatePresence>
+
+      {/* Navigation Arrows */}
+      <button className="hero-nav hero-nav-prev" onClick={prevSlide} aria-label="Previous slide">
+        <ChevronLeft size={28} />
+      </button>
+      <button className="hero-nav hero-nav-next" onClick={nextSlide} aria-label="Next slide">
+        <ChevronRight size={28} />
+      </button>
+
+      {/* Slide Indicators */}
+      <div className="hero-indicators">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            className={`hero-indicator${index === currentSlide ? ' active' : ''}`}
+            onClick={() => setCurrentSlide(index)}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   )

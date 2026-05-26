@@ -5,21 +5,24 @@ import logo from '../assets/BVM logo/BVM Logo.png'
 import './Navbar.css'
 
 const navLinks = [
-  { label: 'Home',                href: '#home' },
-  { label: 'About Us',            href: '#about' },
-  { label: 'Achievements',        href: '#achievements' },
-  { label: 'Integrated Coaching', href: '#coaching' },
-  { label: 'Admissions',          href: '#admissions' },
-  { label: 'Blog',                href: '#blog' },
-  { label: 'Contact Us',          href: '#contact' },
+  { label: 'Home',                href: '#home', onClick: null },
+  { label: 'About Us',            href: '#about', onClick: null },
+  { label: 'Achievements',        href: '#achievements', onClick: null },
+  { label: 'Integrated Coaching', href: '#coaching', onClick: null },
+  { label: 'Admissions',          href: '#admissions', onClick: null },
+  { label: 'Blog',                href: '#blog', onClick: 'blog' },
+  { label: 'Contact Us',          href: '#contact', onClick: null },
 ]
 
-export default function Navbar({ onEnquireClick }) {
+export default function Navbar({ onEnquireClick, onBlogClick }) {
   const [open, setOpen]       = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60)
+    const onScroll = () => {
+      const heroHeight = window.innerHeight * 0.85
+      setScrolled(window.scrollY > heroHeight)
+    }
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -46,7 +49,13 @@ export default function Navbar({ onEnquireClick }) {
           <ul className="nav-links">
             {navLinks.map(l => (
               <li key={l.href}>
-                <a href={l.href} className="nav-link">{l.label}</a>
+                {l.onClick === 'blog' ? (
+                  <button onClick={onBlogClick} className="nav-link nav-link-btn">
+                    {l.label}
+                  </button>
+                ) : (
+                  <a href={l.href} className="nav-link">{l.label}</a>
+                )}
               </li>
             ))}
           </ul>
@@ -83,9 +92,15 @@ export default function Navbar({ onEnquireClick }) {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06 }}
                 >
-                  <a href={l.href} className="mobile-link" onClick={() => setOpen(false)}>
-                    {l.label}
-                  </a>
+                  {l.onClick === 'blog' ? (
+                    <button onClick={() => { onBlogClick(); setOpen(false); }} className="mobile-link mobile-link-btn">
+                      {l.label}
+                    </button>
+                  ) : (
+                    <a href={l.href} className="mobile-link" onClick={() => setOpen(false)}>
+                      {l.label}
+                    </a>
+                  )}
                 </motion.li>
               ))}
             </ul>

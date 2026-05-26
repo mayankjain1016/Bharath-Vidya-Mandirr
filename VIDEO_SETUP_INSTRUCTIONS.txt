@@ -1,0 +1,20 @@
+# Instructions to Fix Memory Issue
+
+The application is running out of memory because large video files are being imported into the JavaScript bundle.
+
+## Solution:
+
+1. Create a folder: `public/videos/`
+
+2. Copy these video files from `src/assets/Blogs/` to `public/videos/`:
+   - kindergarten testimonial 2.mp4 → rename to: kindergarten-testimonial-2.mp4
+   - kindergarten testimonial final (2).mp4 → rename to: kindergarten-testimonial-final-2.mp4
+   - parents testimonial 3.mp4 → rename to: parents-testimonial-3.mp4
+   - shaina yarden final.mp4 → rename to: shaina-yarden-final.mp4
+   - Shri Varshini.mp4 → rename to: shri-varshini.mp4
+
+3. The Blog.jsx file is already configured to use these paths from the public folder.
+
+4. After moving the videos, the app will run without memory issues.
+
+Note: Videos in the public folder are not bundled with JavaScript, they are served as static assets.
