@@ -14,7 +14,7 @@ const navLinks = [
   { label: 'Contact Us',          href: '#contact' },
 ]
 
-export default function Navbar() {
+export default function Navbar({ onEnquireClick }) {
   const [open, setOpen]       = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -52,7 +52,7 @@ export default function Navbar() {
           </ul>
 
           {/* CTA */}
-          <a href="#contact" className="btn btn-teal nav-cta">Enquire Now</a>
+          <button onClick={onEnquireClick} className="btn btn-teal nav-cta">Enquire Now</button>
 
           {/* Hamburger */}
           <button
@@ -89,9 +89,9 @@ export default function Navbar() {
                 </motion.li>
               ))}
             </ul>
-            <a href="#contact" className="btn btn-teal mobile-cta" onClick={() => setOpen(false)}>
+            <button onClick={() => { onEnquireClick(); setOpen(false); }} className="btn btn-teal mobile-cta">
               Enquire Now
-            </a>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

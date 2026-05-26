@@ -9,7 +9,7 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.7, delay, ease: 'easeOut' },
 })
 
-export default function Hero() {
+export default function Hero({ onEnquireClick }) {
   return (
     <section className="hero">
       {/* Radial gradient overlay */}
@@ -33,9 +33,9 @@ export default function Hero() {
           </motion.p>
 
           <motion.div className="hero-btns" {...fadeUp(0.6)}>
-            <a href="#contact" className="btn btn-teal">
+            <button onClick={onEnquireClick} className="btn btn-teal">
               Book a Campus Tour <ArrowRight size={17} />
-            </a>
+            </button>
             <a href="#about" className="btn btn-outline-white">Learn More</a>
           </motion.div>
 
