@@ -1,14 +1,20 @@
 import { motion } from 'framer-motion'
-import { Trophy } from 'lucide-react'
 import './AwardsRecognition.css'
 
+import award1 from '../assets/Awards/Vikatan Educational Legacy Award.jpeg'
+import award2 from '../assets/Awards/Best Environment school award.jpeg'
+import award3 from '../assets/Awards/Best Gogreen School  Award .jpeg'
+import award4 from '../assets/Awards/Dinamalar Best CBSE School in Tenkasi.jpeg'
+import award5 from '../assets/Awards/State award for Essay Writing .jpeg'
+import award6 from '../assets/Awards/20260121_1359491.jpg.jpeg'
+
 const awards = [
-  { title: 'Best School — Tenkasi District',    year: '2023', desc: 'Recognised for outstanding academic performance and holistic student development.' },
-  { title: 'Excellence in Sports',              year: '2022', desc: 'State-level champions in athletics, kabaddi, and chess tournaments.' },
-  { title: 'Green School Award',                year: '2023', desc: 'Awarded for eco-friendly campus initiatives and environmental education.' },
-  { title: 'Innovation in Education',           year: '2023', desc: 'Honoured for integrating smart technology and modern pedagogy in classrooms.' },
-  { title: 'Community Service Recognition',     year: '2022', desc: 'Acknowledged for impactful outreach programmes benefiting the Tenkasi community.' },
-  { title: 'Academic Excellence — CBSE Region', year: '2024', desc: 'Top-performing school in the CBSE Southern Region for board examination results.' },
+  { title: 'Vikatan Educational Legacy Award', image: award1, desc: 'Recognised for outstanding contribution to education and maintaining high academic standards.' },
+  { title: 'Best Environment School Award', image: award2, desc: 'Awarded for exceptional eco-friendly initiatives and environmental consciousness in campus management.' },
+  { title: 'Best Go Green School Award', image: award3, desc: 'Honoured for promoting sustainability and green practices among students and staff.' },
+  { title: 'Dinamalar Best CBSE School in Tenkasi', image: award4, desc: 'Recognised as the top CBSE school in Tenkasi district for academic excellence and overall development.' },
+  { title: 'State Award for Essay Writing', image: award5, desc: 'State-level recognition for excellence in literary skills and creative writing competitions.' },
+  { title: 'Academic Excellence Award', image: award6, desc: 'Celebrated for consistent outstanding performance in board examinations and competitive exams.' },
 ]
 
 const container = {
@@ -48,11 +54,10 @@ export default function AwardsRecognition() {
         >
           {awards.map((a, i) => (
             <motion.div key={i} className="award-card" variants={item} whileHover={{ scale: 1.03 }}>
-              <div className="award-icon">
-                <Trophy size={32} color="var(--gold)" strokeWidth={1.5} />
+              <div className="award-image">
+                <img src={a.image} alt={a.title} />
               </div>
               <h3 className="award-title">{a.title}</h3>
-              <span className="award-year">{a.year}</span>
               <p className="award-desc">{a.desc}</p>
             </motion.div>
           ))}
