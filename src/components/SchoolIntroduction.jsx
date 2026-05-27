@@ -16,7 +16,7 @@ export default function SchoolIntroduction() {
         >
           <div className="intro-image-container">
             <img 
-              src="/src/assets/HomePageImg.JPG" 
+              src="/src/assets/HomePageImg.jpeg" 
               alt="Bharath Vidya Mandir School" 
               className="intro-image"
             />
