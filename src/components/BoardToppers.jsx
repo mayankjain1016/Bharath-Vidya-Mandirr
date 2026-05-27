@@ -76,7 +76,7 @@ export default function BoardToppers() {
                 transition={{ duration: 0.5 }}
               >
                 {visibleToppers.map((topper) => (
-                  <div key={topper.id} className="topper-card glow-target">
+                  <div key={topper.id} className="topper-card">
                     <div className="topper-image-wrapper">
                       <img src={topper.image} alt={topper.name} className="topper-image" />
                       <div className="topper-badge">

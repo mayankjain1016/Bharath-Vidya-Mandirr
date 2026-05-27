@@ -59,7 +59,7 @@ export default function FAQ() {
           {faqs.map((f, i) => (
             <motion.div
               key={i}
-              className={`faq-item glow-target${open === i ? ' faq-item--open' : ''}`}
+              className={`faq-item${open === i ? ' faq-item--open' : ''}`}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

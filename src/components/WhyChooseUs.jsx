@@ -76,7 +76,7 @@ export default function WhyChooseUs() {
           {cards.map(({ Icon, title, desc }, i) => (
             <motion.div 
               key={i} 
-              className="wcu-card glow-target" 
+              className="wcu-card" 
               variants={item}
               onMouseEnter={() => setHoveredCard(i)}
               onMouseLeave={() => setHoveredCard(null)}

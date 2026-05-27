@@ -57,7 +57,7 @@ export default function Testimonials() {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           {testimonials.map((t, i) => (
-            <div key={i} className="testi-card glow-target">
+            <div key={i} className="testi-card">
               <span className="testi-quote-mark">"</span>
               <Stars />
               <p className="testi-text">{t.quote}</p>
@@ -74,7 +74,7 @@ export default function Testimonials() {
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
-              className="testi-card glow-target"
+              className="testi-card"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -30 }}

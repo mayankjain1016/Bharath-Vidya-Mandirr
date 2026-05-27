@@ -31,14 +31,14 @@ export default function IntegratedCoaching() {
           </p>
 
           <div className="coaching-stages">
-            <div className="stage-card glow-target">
+            <div className="stage-card">
               <div className="stage-badge">Stage I</div>
               <div>
                 <h4>Extended Learning — Classes VI to X</h4>
                 <p>Building strong conceptual foundations in Science and Mathematics with subject experts, ensuring students are well-prepared for competitive exam thinking from an early age.</p>
               </div>
             </div>
-            <div className="stage-card glow-target">
+            <div className="stage-card">
               <div className="stage-badge stage-badge--gold">Stage II</div>
               <div>
                 <h4>Entrance Exam Prep — Classes XI &amp; XII</h4>
@@ -60,7 +60,7 @@ export default function IntegratedCoaching() {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.15 }}
         >
-          <div className="coaching-card glow-target">
+          <div className="coaching-card">
             <p className="coaching-card-label">Curriculum Breakdown</p>
             <div className="subject-grid">
               {subjects.map(({ Icon, label }) => (

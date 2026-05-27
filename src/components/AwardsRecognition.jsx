@@ -53,7 +53,7 @@ export default function AwardsRecognition() {
           viewport={{ once: true }}
         >
           {awards.map((a, i) => (
-            <motion.div key={i} className="award-card glow-target" variants={item} whileHover={{ scale: 1.03 }}>
+            <motion.div key={i} className="award-card" variants={item} whileHover={{ scale: 1.03 }}>
               <div className="award-image">
                 <img src={a.image} alt={a.title} />
               </div>

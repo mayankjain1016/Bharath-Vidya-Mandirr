@@ -58,7 +58,7 @@ export default function Gallery() {
           {galleryImages.map((image) => (
             <motion.div
               key={image.id}
-              className="gallery-item glow-target"
+              className="gallery-item"
               variants={item}
               whileHover={{ y: -12, scale: 1.02 }}
               transition={{ duration: 0.3 }}
