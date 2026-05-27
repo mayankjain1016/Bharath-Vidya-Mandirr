@@ -1,0 +1,370 @@
+.school-intro {
+  background: var(--bg-light);
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background decoration */
+.school-intro::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(201, 146, 42, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.school-intro::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(26, 140, 140, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.school-intro-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── IMAGE SIDE ─── */
+.intro-image-wrapper {
+  height: 100%;
+}
+
+.intro-image-container {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(11, 31, 58, 0.15);
+  transition: box-shadow 0.5s ease, transform 0.5s ease;
+  height: 100%;
+  min-height: 550px;
+}
+
+.intro-image-container:hover {
+  box-shadow: 0 30px 80px rgba(11, 31, 58, 0.2);
+  transform: translateY(-8px);
+}
+
+.intro-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.intro-image-container:hover .intro-image {
+  transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(11, 31, 58, 0.2) 0%, rgba(201, 146, 42, 0.1) 100%);
+  pointer-events: none;
+}
+
+.image-badge {
+  display: none;
+}
+
+.badge-icon {
+  display: none;
+}
+
+.badge-title {
+  display: none;
+}
+
+.badge-sub {
+  display: none;
+}
+
+/* ─── CONTENT SIDE ─── */
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.intro-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.intro-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: rgba(26, 140, 140, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.intro-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-family: var(--heading);
+  line-height: 1.3;
+  color: var(--primary);
+  margin: 0;
+}
+
+.intro-subtitle {
+  font-size: 1.05rem;
+  color: var(--gray-600);
+  line-height: 1.75;
+  margin: 0;
+}
+
+.intro-description {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.intro-description p {
+  font-size: 0.95rem;
+  color: var(--gray-600);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.intro-cta {
+  width: fit-content;
+  margin-top: 0.5rem;
+}
+
+/* ─── STATS GRID ─── */
+.intro-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.8rem;
+  margin-top: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.5rem;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(11, 31, 58, 0.06);
+  border: 1px solid rgba(26, 140, 140, 0.1);
+  transition: all 0.4s ease;
+  cursor: default;
+}
+
+.stat-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(26, 140, 140, 0.15);
+  border-color: var(--teal);
+}
+
+.stat-icon-wrapper {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  background: rgba(26, 140, 140, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover .stat-icon-wrapper {
+  background: rgba(26, 140, 140, 0.2);
+  transform: scale(1.1);
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--teal);
+  font-family: var(--heading);
+  margin: 0;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--gray-600);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .school-intro {
+    padding: 5rem 0;
+  }
+
+  .school-intro-inner {
+    gap: 3rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .intro-image-container {
+    min-height: 450px;
+  }
+
+  .intro-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  }
+
+  .intro-stats {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .school-intro {
+    padding: 4rem 0;
+  }
+
+  .school-intro-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .intro-image-container {
+    min-height: 380px;
+  }
+
+  .intro-title {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+  }
+
+  .intro-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .intro-description p {
+    font-size: 0.9rem;
+  }
+
+  .intro-stats {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .stat-item {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .school-intro {
+    padding: 3rem 0;
+  }
+
+  .school-intro::before {
+    width: 300px;
+    height: 300px;
+    top: -30%;
+    right: -15%;
+  }
+
+  .school-intro::after {
+    width: 250px;
+    height: 250px;
+    bottom: -20%;
+  }
+
+  .intro-header {
+    gap: 0.6rem;
+  }
+
+  .intro-title {
+    font-size: 1.5rem;
+  }
+
+  .intro-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .intro-description p {
+    font-size: 0.85rem;
+  }
+
+  .intro-tag {
+    font-size: 0.65rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .intro-stats {
+    gap: 1rem;
+  }
+
+  .stat-item {
+    padding: 1rem;
+    gap: 0.8rem;
+  }
+
+  .stat-value {
+    font-size: 1.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .stat-icon-wrapper {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 400px) {
+  .school-intro-inner {
+    gap: 2rem;
+  }
+
+  .intro-image-container {
+    min-height: 300px;
+  }
+
+  .intro-title {
+    font-size: 1.3rem;
+  }
+
+  .intro-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+    padding: 0.7rem 1.4rem;
+  }
+
+  .stat-value {
+    font-size: 1.3rem;
+  }
+}

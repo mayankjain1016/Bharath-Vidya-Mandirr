@@ -6,20 +6,13 @@
   background: var(--primary);
 }
 
-.hero-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
 .hero-slide-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 1;
 }
 
 .hero-slide-bg img {
@@ -27,8 +20,6 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  will-change: transform, opacity;
-  backface-visibility: hidden;
 }
 
 .hero-overlay {
@@ -55,18 +46,6 @@
 
 .hero-text {
   max-width: 700px;
-  animation: fadeInUp 1s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .hero-title {
@@ -96,40 +75,6 @@
 .hero-buttons .btn {
   padding: 0.7rem 1.2rem;
   font-size: 0.88rem;
-}
-
-/* Navigation Arrows */
-.hero-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--white);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.hero-nav:hover {
-  background: var(--gold);
-  border-color: var(--gold);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.hero-nav-prev {
-  left: 2rem;
-}
-
-.hero-nav-next {
-  right: 2rem;
 }
 
 /* Slide Indicators */

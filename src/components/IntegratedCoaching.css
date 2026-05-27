@@ -42,6 +42,15 @@
   max-width: 100%;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.stage-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 12px 32px rgba(201,146,42,0.25);
+  border-color: var(--gold);
 }
 
 .stage-badge {
@@ -55,8 +64,18 @@
   padding: 0.35rem 0.75rem;
   border-radius: 20px;
   margin-top: 3px;
+  transition: all 0.3s ease;
 }
 .stage-badge--gold { background: var(--gold); }
+
+.stage-card:hover .stage-badge {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(26,140,140,0.4);
+}
+
+.stage-card:hover .stage-badge--gold {
+  box-shadow: 0 4px 12px rgba(201,146,42,0.4);
+}
 
 .stage-card h4 {
   font-family: var(--sans);
@@ -89,6 +108,14 @@
   padding: 1.8rem;
   max-width: 100%;
   overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.coaching-card:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(201,146,42,0.6);
+  box-shadow: 0 12px 32px rgba(201,146,42,0.2);
+  transform: translateY(-6px);
 }
 
 .coaching-card-label {
@@ -117,6 +144,16 @@
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--white);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.subject-chip:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-3px);
+  border-color: rgba(201,146,42,0.4);
+  box-shadow: 0 6px 16px rgba(201,146,42,0.2);
 }
 
 .timeline {
@@ -135,9 +172,25 @@
   align-items: center;
   text-align: center;
   gap: 0.3rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 .tl-stage--navy { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); }
 .tl-stage--gold { background: rgba(201,146,42,0.2); border: 1px solid var(--gold); }
+
+.tl-stage:hover {
+  transform: scale(1.05);
+}
+
+.tl-stage--navy:hover {
+  background: rgba(255,255,255,0.15);
+  box-shadow: 0 6px 16px rgba(26,140,140,0.3);
+}
+
+.tl-stage--gold:hover {
+  background: rgba(201,146,42,0.3);
+  box-shadow: 0 6px 16px rgba(201,146,42,0.4);
+}
 
 .tl-classes {
   font-size: 0.95rem;
@@ -163,12 +216,25 @@
   text-align: center;
   padding: 0.6rem 1rem;
   border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.coaching-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(201,146,42,0.4);
 }
 
 .coaching-img {
   width: 100%;
   border-radius: 12px;
   box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+  transition: all 0.4s ease;
+}
+
+.coaching-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
 }
 
 /* ── Responsive ── */

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
 import './StatsBar.css'
 
 const stats = [
@@ -7,6 +8,7 @@ const stats = [
   { end: 6000, suffix: '+', label: 'Happy Parents' },
   { end: 60,   suffix: '+', label: 'Subject Experts' },
   { end: 70,   suffix: '+', label: 'Well Trained Staff' },
+  { end: 250,  suffix: '+', label: 'State & National Achievers' },
 ]
 
 function Counter({ end, suffix }) {
@@ -42,10 +44,17 @@ export default function StatsBar() {
     <div className="stats-bar">
       <div className="container stats-inner">
         {stats.map((s, i) => (
-          <div key={i} className="stat-item">
+          <motion.div 
+            key={i} 
+            className="stat-item"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+          >
             <span className="stat-num"><Counter end={s.end} suffix={s.suffix} /></span>
             <span className="stat-label">{s.label}</span>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

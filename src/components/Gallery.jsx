@@ -3,11 +3,11 @@ import { Camera } from 'lucide-react'
 import './Gallery.css'
 
 // Import images from Gallery folder
-import img1 from '../assets/Gallery/IMG_2034.JPG'
-import img2 from '../assets/Gallery/IMG_2041.JPG'
-import img3 from '../assets/Gallery/IMG_2046.JPG'
-import img4 from '../assets/Gallery/IMG_2050.JPG'
-import img5 from '../assets/Gallery/IMG_2052.JPG'
+import img1 from '../assets/Gallery/222f3552-0488-4c3c-985f-2dc0a2ecdff9.jfif'
+import img2 from '../assets/Gallery/50ecdf4c-c3f9-4fce-a235-fbbae8475f01.jfif'
+import img3 from '../assets/Gallery/556293ea-3c6b-404a-ad84-426647ab7110.jfif'
+import img4 from '../assets/Gallery/67b6f4f6-6442-460e-8680-32748a807250.jfif'
+import img5 from '../assets/Gallery/6a1b745f-8bad-45eb-931e-dc50fda23f20.jfif'
 
 const galleryImages = [
   { id: 1, src: img1, title: 'Campus Life' },
@@ -58,7 +58,7 @@ export default function Gallery() {
           {galleryImages.map((image) => (
             <motion.div
               key={image.id}
-              className="gallery-item"
+              className="gallery-item glow-target"
               variants={item}
               whileHover={{ y: -12, scale: 1.02 }}
               transition={{ duration: 0.3 }}

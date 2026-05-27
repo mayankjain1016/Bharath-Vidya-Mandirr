@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import './Hero.css'
 
 // Import images from Hero_img folder
@@ -43,43 +43,35 @@ export default function Hero({ onEnquireClick }) {
 
   return (
     <section className="hero-slider">
+      {/* Background Images - Only these animate */}
       <AnimatePresence initial={false}>
         <motion.div
           key={currentSlide}
-          className="hero-slide"
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 1.2, ease: 'easeInOut' }}
+          className="hero-slide-bg"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1, ease: 'easeInOut' }}
         >
-          <div className="hero-slide-bg">
-            <img src={slides[currentSlide].image} alt="Bharath Vidya Mandir" />
-            <div className="hero-overlay" />
-          </div>
-
-          <div className="container hero-content">
-            <div className="hero-text">
-              <h1 className="hero-title">Shaping Tomorrow's Leaders Today</h1>
-              <p className="hero-subtitle">Where academic excellence meets holistic development — preparing students for NEET, JEE & beyond since decades.</p>
-              
-              <div className="hero-buttons">
-                <button onClick={onEnquireClick} className="btn btn-teal">
-                  Campus Tour <ArrowRight size={17} />
-                </button>
-                <a href="#about" className="btn btn-outline-white">Learn More</a>
-              </div>
-            </div>
-          </div>
+          <img src={slides[currentSlide].image} alt="Bharath Vidya Mandir" />
+          <div className="hero-overlay" />
         </motion.div>
       </AnimatePresence>
 
-      {/* Navigation Arrows */}
-      <button className="hero-nav hero-nav-prev" onClick={prevSlide} aria-label="Previous slide">
-        <ChevronLeft size={28} />
-      </button>
-      <button className="hero-nav hero-nav-next" onClick={nextSlide} aria-label="Next slide">
-        <ChevronRight size={28} />
-      </button>
+      {/* Fixed Content - Never moves */}
+      <div className="container hero-content">
+        <div className="hero-text">
+          <h1 className="hero-title">Shaping Tomorrow's Leaders Today</h1>
+          <p className="hero-subtitle">Where academic excellence meets holistic development — preparing students for NEET, JEE & beyond since decades.</p>
+          
+          <div className="hero-buttons">
+            <button onClick={onEnquireClick} className="btn btn-teal">
+              Campus Tour <ArrowRight size={17} />
+            </button>
+            <a href="#about" className="btn btn-outline-white">Learn More</a>
+          </div>
+        </div>
+      </div>
 
       {/* Slide Indicators */}
       <div className="hero-indicators">

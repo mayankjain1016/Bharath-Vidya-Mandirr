@@ -35,16 +35,19 @@
   padding: 2.2rem 1.8rem;
   box-shadow: 0 2px 12px rgba(11,31,58,0.06);
   border-left: 4px solid transparent;
-  transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
-  cursor: default;
+  transition: all 0.4s ease;
+  cursor: pointer;
   max-width: 100%;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  position: relative;
 }
 
 .wcu-card:hover {
-  box-shadow: 0 12px 32px rgba(11,31,58,0.12);
-  border-left-color: var(--gold);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(26,140,140,0.15);
+  border-left-color: var(--teal);
+  background: var(--teal);
 }
 
 .wcu-card:focus-within { border-left-color: var(--teal); }
@@ -57,6 +60,12 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 1.3rem;
+  transition: all 0.3s ease;
+}
+
+.wcu-card:hover .wcu-icon {
+  background: rgba(255,255,255,0.2);
+  transform: scale(1.1);
 }
 
 .wcu-card h3 {
@@ -65,12 +74,22 @@
   color: var(--primary);
   margin-bottom: 0.7rem;
   font-family: var(--sans);
+  transition: color 0.3s ease;
+}
+
+.wcu-card:hover h3 {
+  color: var(--white);
 }
 
 .wcu-card p {
   font-size: 0.9rem;
   color: var(--gray-600);
   line-height: 1.7;
+  transition: color 0.3s ease;
+}
+
+.wcu-card:hover p {
+  color: rgba(255, 255, 255, 0.95);
 }
 
 @media (max-width: 1024px) {

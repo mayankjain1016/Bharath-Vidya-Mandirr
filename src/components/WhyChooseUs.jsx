@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import { BookOpen, GraduationCap, Heart, Monitor, Users, Utensils } from 'lucide-react'
 import './WhyChooseUs.css'
 
@@ -45,6 +46,8 @@ const item = {
 }
 
 export default function WhyChooseUs() {
+  const [hoveredCard, setHoveredCard] = useState(null)
+
   return (
     <section className="wcu">
       <div className="container">
@@ -71,9 +74,19 @@ export default function WhyChooseUs() {
           viewport={{ once: true }}
         >
           {cards.map(({ Icon, title, desc }, i) => (
-            <motion.div key={i} className="wcu-card" variants={item} whileHover={{ y: -8 }}>
+            <motion.div 
+              key={i} 
+              className="wcu-card glow-target" 
+              variants={item}
+              onMouseEnter={() => setHoveredCard(i)}
+              onMouseLeave={() => setHoveredCard(null)}
+            >
               <div className="wcu-icon">
-                <Icon size={28} color="var(--teal)" strokeWidth={1.8} />
+                <Icon 
+                  size={28} 
+                  color={hoveredCard === i ? 'var(--white)' : 'var(--teal)'} 
+                  strokeWidth={1.8} 
+                />
               </div>
               <h3>{title}</h3>
               <p>{desc}</p>

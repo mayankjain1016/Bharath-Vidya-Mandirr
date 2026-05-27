@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { Trophy, Award, Medal, Star, Target, Sparkles } from 'lucide-react'
 import './AchievementsBanner.css'
 
@@ -16,7 +17,13 @@ const items = [
 
 export default function AchievementsBanner() {
   return (
-    <div className="ach-banner">
+    <motion.div 
+      className="ach-banner"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="ach-marquee">
         <div className="ach-track">
           {[...items, ...items].map((item, i) => {
@@ -35,6 +42,6 @@ export default function AchievementsBanner() {
           })}
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
