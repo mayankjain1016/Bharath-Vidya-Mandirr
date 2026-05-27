@@ -16,6 +16,7 @@ import Footer from './components/Footer'
 import EnquiryForm from './components/EnquiryForm'
 import Blog from './components/Blog'
 
+// Custom cursor effects removed - using default system cursor
 function App() {
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false)
   const [isBlogOpen, setIsBlogOpen] = useState(false)
