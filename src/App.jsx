@@ -15,8 +15,6 @@ import FAQ from './components/FAQ'
 import Footer from './components/Footer'
 import EnquiryForm from './components/EnquiryForm'
 import Blog from './components/Blog'
-import CursorGlow from './components/CursorGlow'
-import CustomCursor from './components/CustomCursor'
 
 function App() {
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false)
@@ -28,8 +26,6 @@ function App() {
 
   return (
     <>
-      <CustomCursor />
-      <CursorGlow />
       <Navbar 
         onEnquireClick={() => setIsEnquiryOpen(true)}
         onBlogClick={() => setIsBlogOpen(true)}
