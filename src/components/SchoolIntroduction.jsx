@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import './SchoolIntroduction.css'
+import schoolImage from '../assets/HomePageImg.jpeg'
 
 export default function SchoolIntroduction() {
   return (
@@ -16,7 +17,7 @@ export default function SchoolIntroduction() {
         >
           <div className="intro-image-container">
             <img 
-              src="/src/assets/HomePageImg.jpeg" 
+              src={schoolImage} 
               alt="Bharath Vidya Mandir School" 
               className="intro-image"
             />
