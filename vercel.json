@@ -1,9 +1,5 @@
-{
-  "git": {
-    "deploymentEnabled": {
-      "main": true
-    }
-  },
+﻿{
+  "installCommand": "npm install",
   "buildCommand": "npm run build",
-  "installCommand": "git lfs install && git lfs pull && npm install"
+  "outputDirectory": "dist"
 }
