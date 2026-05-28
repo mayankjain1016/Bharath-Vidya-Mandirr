@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { MapPin, Phone, Mail } from 'lucide-react'
 import { FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa'
-import logo from '../assets/BVM logo/BVM Logo.png'
+import logo from '../assets/BVM logo/BVMLogo.jpeg'
 import './Footer.css'
 
 const quickLinks = [
