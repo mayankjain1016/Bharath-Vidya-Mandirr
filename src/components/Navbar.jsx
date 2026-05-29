@@ -6,15 +6,14 @@ import './Navbar.css'
 
 const navLinks = [
   { label: 'Home',                href: '#home', onClick: null },
-  { label: 'About Us',            href: '#about', onClick: null },
-  { label: 'Achievements',        href: '#achievements', onClick: null },
+  { label: 'About Us',            href: '#about-page', onClick: 'about' },
+  { label: 'Achievements',        href: '#achievements-page', onClick: 'achievements' },
   { label: 'Integrated Coaching', href: '#coaching', onClick: null },
-  { label: 'Admissions',          href: '#admissions', onClick: null },
+  { label: 'Admissions',          href: '#admissions-page', onClick: 'admissions' },
   { label: 'Blog',                href: '#blog', onClick: 'blog' },
-  { label: 'Contact Us',          href: '#contact', onClick: null },
 ]
 
-export default function Navbar({ onEnquireClick, onBlogClick }) {
+export default function Navbar({ onEnquireClick, onBlogClick, onAboutClick, onAchievementsClick, onAdmissionsClick }) {
   const [open, setOpen]       = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -51,6 +50,18 @@ export default function Navbar({ onEnquireClick, onBlogClick }) {
               <li key={l.href}>
                 {l.onClick === 'blog' ? (
                   <button onClick={onBlogClick} className="nav-link nav-link-btn">
+                    {l.label}
+                  </button>
+                ) : l.onClick === 'about' ? (
+                  <button onClick={onAboutClick} className="nav-link nav-link-btn">
+                    {l.label}
+                  </button>
+                ) : l.onClick === 'achievements' ? (
+                  <button onClick={onAchievementsClick} className="nav-link nav-link-btn">
+                    {l.label}
+                  </button>
+                ) : l.onClick === 'admissions' ? (
+                  <button onClick={onAdmissionsClick} className="nav-link nav-link-btn">
                     {l.label}
                   </button>
                 ) : (
@@ -94,6 +105,18 @@ export default function Navbar({ onEnquireClick, onBlogClick }) {
                 >
                   {l.onClick === 'blog' ? (
                     <button onClick={() => { onBlogClick(); setOpen(false); }} className="mobile-link mobile-link-btn">
+                      {l.label}
+                    </button>
+                  ) : l.onClick === 'about' ? (
+                    <button onClick={() => { onAboutClick(); setOpen(false); }} className="mobile-link mobile-link-btn">
+                      {l.label}
+                    </button>
+                  ) : l.onClick === 'achievements' ? (
+                    <button onClick={() => { onAchievementsClick(); setOpen(false); }} className="mobile-link mobile-link-btn">
+                      {l.label}
+                    </button>
+                  ) : l.onClick === 'admissions' ? (
+                    <button onClick={() => { onAdmissionsClick(); setOpen(false); }} className="mobile-link mobile-link-btn">
                       {l.label}
                     </button>
                   ) : (

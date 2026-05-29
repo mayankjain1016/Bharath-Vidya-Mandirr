@@ -15,14 +15,83 @@ import FAQ from './components/FAQ'
 import Footer from './components/Footer'
 import EnquiryForm from './components/EnquiryForm'
 import Blog from './components/Blog'
-
+import AboutUs from './components/AboutUs'
+import Achievements from './components/Achievements'
+import Admissions from './components/Admissions'
 // Custom cursor effects removed - using default system cursor
 function App() {
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false)
   const [isBlogOpen, setIsBlogOpen] = useState(false)
+  const [isAboutOpen, setIsAboutOpen] = useState(false)
+  const [isAchievementsOpen, setIsAchievementsOpen] = useState(false)
+  const [isAdmissionsOpen, setIsAdmissionsOpen] = useState(false)
 
   if (isBlogOpen) {
-    return <Blog onClose={() => setIsBlogOpen(false)} />
+    return (
+      <>
+        <Navbar 
+          onEnquireClick={() => setIsEnquiryOpen(true)}
+          onBlogClick={() => setIsBlogOpen(false)}
+          onAboutClick={() => { setIsBlogOpen(false); setIsAboutOpen(true); }}
+          onAchievementsClick={() => { setIsBlogOpen(false); setIsAchievementsOpen(true); }}
+          onAdmissionsClick={() => { setIsBlogOpen(false); setIsAdmissionsOpen(true); }}
+        />
+        <Blog onClose={() => setIsBlogOpen(false)} />
+        <Footer />
+        <EnquiryForm isOpen={isEnquiryOpen} onClose={() => setIsEnquiryOpen(false)} />
+      </>
+    )
+  }
+
+  if (isAboutOpen) {
+    return (
+      <>
+        <Navbar 
+          onEnquireClick={() => setIsEnquiryOpen(true)}
+          onBlogClick={() => setIsBlogOpen(true)}
+          onAboutClick={() => setIsAboutOpen(false)}
+          onAchievementsClick={() => { setIsAboutOpen(false); setIsAchievementsOpen(true); }}
+          onAdmissionsClick={() => { setIsAboutOpen(false); setIsAdmissionsOpen(true); }}
+        />
+        <AboutUs onEnquireClick={() => setIsEnquiryOpen(true)} />
+        <Footer />
+        <EnquiryForm isOpen={isEnquiryOpen} onClose={() => setIsEnquiryOpen(false)} />
+      </>
+    )
+  }
+
+  if (isAchievementsOpen) {
+    return (
+      <>
+        <Navbar 
+          onEnquireClick={() => setIsEnquiryOpen(true)}
+          onBlogClick={() => setIsBlogOpen(true)}
+          onAboutClick={() => { setIsAchievementsOpen(false); setIsAboutOpen(true); }}
+          onAchievementsClick={() => setIsAchievementsOpen(false)}
+          onAdmissionsClick={() => { setIsAchievementsOpen(false); setIsAdmissionsOpen(true); }}
+        />
+        <Achievements onEnquireClick={() => setIsEnquiryOpen(true)} />
+        <Footer />
+        <EnquiryForm isOpen={isEnquiryOpen} onClose={() => setIsEnquiryOpen(false)} />
+      </>
+    )
+  }
+
+  if (isAdmissionsOpen) {
+    return (
+      <>
+        <Navbar 
+          onEnquireClick={() => setIsEnquiryOpen(true)}
+          onBlogClick={() => setIsBlogOpen(true)}
+          onAboutClick={() => { setIsAdmissionsOpen(false); setIsAboutOpen(true); }}
+          onAchievementsClick={() => { setIsAdmissionsOpen(false); setIsAchievementsOpen(true); }}
+          onAdmissionsClick={() => setIsAdmissionsOpen(false)}
+        />
+        <Admissions onEnquireClick={() => setIsEnquiryOpen(true)} />
+        <Footer />
+        <EnquiryForm isOpen={isEnquiryOpen} onClose={() => setIsEnquiryOpen(false)} />
+      </>
+    )
   }
 
   return (
@@ -30,6 +99,9 @@ function App() {
       <Navbar 
         onEnquireClick={() => setIsEnquiryOpen(true)}
         onBlogClick={() => setIsBlogOpen(true)}
+        onAboutClick={() => setIsAboutOpen(true)}
+        onAchievementsClick={() => setIsAchievementsOpen(true)}
+        onAdmissionsClick={() => setIsAdmissionsOpen(true)}
       />
       <main>
         <section id="home"><Hero onEnquireClick={() => setIsEnquiryOpen(true)} /></section>
