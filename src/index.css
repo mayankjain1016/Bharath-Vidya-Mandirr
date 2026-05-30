@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --primary:    #0B1F3A;
   --gold:       #C9922A;
@@ -81,6 +85,9 @@ img { max-width: 100%; display: block; height: auto; }
 
 .btn-teal  { background: var(--teal);  color: var(--white); border: 2px solid var(--teal); }
 .btn-teal:hover  { background: #157878; border-color: #157878; box-shadow: 0 8px 20px rgba(26,140,140,.35); }
+
+.btn-outline-teal { background: transparent; color: var(--teal); border: 2px solid var(--teal); }
+.btn-outline-teal:hover { background: var(--teal); color: var(--white); box-shadow: 0 8px 20px rgba(26,140,140,.35); }
 
 .btn-outline-white { background: transparent; color: var(--white); border: 2px solid var(--white); }
 .btn-outline-white:hover { background: var(--white); color: var(--primary); }

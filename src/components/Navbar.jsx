@@ -5,7 +5,7 @@ import logo from '../assets/BVM logo/BVMLogo.jpeg'
 import './Navbar.css'
 
 const navLinks = [
-  { label: 'Home',                href: '#home', onClick: null },
+  { label: 'Home',                href: '#home', onClick: 'home' },
   { label: 'About Us',            href: '#about-page', onClick: 'about' },
   { label: 'Achievements',        href: '#achievements-page', onClick: 'achievements' },
   { label: 'Integrated Coaching', href: '#coaching', onClick: null },
@@ -13,7 +13,7 @@ const navLinks = [
   { label: 'Blog',                href: '#blog', onClick: 'blog' },
 ]
 
-export default function Navbar({ onEnquireClick, onBlogClick, onAboutClick, onAchievementsClick, onAdmissionsClick }) {
+export default function Navbar({ onHomeClick, onEnquireClick, onBlogClick, onAboutClick, onAchievementsClick, onAdmissionsClick }) {
   const [open, setOpen]       = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -36,19 +36,23 @@ export default function Navbar({ onEnquireClick, onBlogClick, onAboutClick, onAc
       >
         <div className="container nav-inner">
           {/* Logo */}
-          <a href="#home" className="nav-brand">
+          <button onClick={onHomeClick} className="nav-brand bg-transparent border-none text-left p-0 cursor-pointer">
             <img src={logo} alt="BVM Logo" className="nav-logo-img" />
             <div className="nav-brand-text">
-              <span className="nav-school-name">Bharath Vidya Mandir</span>
-              <span className="nav-school-sub">Tenkasi, Tamil Nadu</span>
+              <span className="nav-school-name block">Bharath Vidya Mandir</span>
+              <span className="nav-school-sub block">Tenkasi, Tamil Nadu</span>
             </div>
-          </a>
+          </button>
 
           {/* Desktop links */}
           <ul className="nav-links">
             {navLinks.map(l => (
               <li key={l.href}>
-                {l.onClick === 'blog' ? (
+                {l.onClick === 'home' ? (
+                  <button onClick={onHomeClick} className="nav-link nav-link-btn">
+                    {l.label}
+                  </button>
+                ) : l.onClick === 'blog' ? (
                   <button onClick={onBlogClick} className="nav-link nav-link-btn">
                     {l.label}
                   </button>
@@ -103,7 +107,11 @@ export default function Navbar({ onEnquireClick, onBlogClick, onAboutClick, onAc
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06 }}
                 >
-                  {l.onClick === 'blog' ? (
+                  {l.onClick === 'home' ? (
+                    <button onClick={() => { onHomeClick(); setOpen(false); }} className="mobile-link mobile-link-btn">
+                      {l.label}
+                    </button>
+                  ) : l.onClick === 'blog' ? (
                     <button onClick={() => { onBlogClick(); setOpen(false); }} className="mobile-link mobile-link-btn">
                       {l.label}
                     </button>

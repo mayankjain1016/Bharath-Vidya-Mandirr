@@ -1,10 +1,20 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { 
   ArrowLeft, Calendar, User, Clock, ArrowRight, BookOpen,
   TrendingUp, Mail, Send, Tag, Eye, Heart, Share2, Search
 } from 'lucide-react'
 import './Blog.css'
+
+// Import school/student images
+import img1 from '../assets/Gallery/222f3552-0488-4c3c-985f-2dc0a2ecdff9.jfif'
+import img2 from '../assets/Gallery/50ecdf4c-c3f9-4fce-a235-fbbae8475f01.jfif'
+import img3 from '../assets/Gallery/556293ea-3c6b-404a-ad84-426647ab7110.jfif'
+import img4 from '../assets/Gallery/67b6f4f6-6442-460e-8680-32748a807250.jfif'
+import img5 from '../assets/Gallery/6a1b745f-8bad-45eb-931e-dc50fda23f20.jfif'
+import img6 from '../assets/Gallery/a3f69f9e-ddfb-404b-9b8d-0940f479eca7.jfif'
+
+const heroImages = [img1, img2, img3, img4, img5, img6]
 
 const featuredPost = {
   id: 1,
@@ -129,6 +139,7 @@ export default function Blog({ onClose }) {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
+  const [randomHeroImage] = useState(() => heroImages[Math.floor(Math.random() * heroImages.length)])
 
   const filteredPosts = selectedCategory === 'All' 
     ? blogPosts 
@@ -148,7 +159,7 @@ export default function Blog({ onClose }) {
   return (
     <div className="blog-page">
       {/* Hero Section */}
-      <section className="blog-hero">
+      <section className="blog-hero" style={{ backgroundImage: `url(${randomHeroImage})` }}>
         <div className="blog-hero-overlay" />
         <div className="container">
           <motion.div

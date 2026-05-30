@@ -16,6 +16,12 @@ const items = [
 ]
 
 export default function AchievementsBanner() {
+  const handleCardClick = (title) => {
+    console.log(`Clicked: ${title}`)
+    // Add your click handler logic here
+    // For example: navigate to details page, open modal, etc.
+  }
+
   return (
     <motion.div 
       className="ach-banner"
@@ -29,7 +35,19 @@ export default function AchievementsBanner() {
           {[...items, ...items].map((item, i) => {
             const IconComponent = item.Icon
             return (
-              <div key={i} className="ach-card">
+              <div 
+                key={i} 
+                className="ach-card"
+                onClick={() => handleCardClick(item.title)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    handleCardClick(item.title)
+                  }
+                }}
+              >
                 <span className="ach-icon">
                   <IconComponent size={24} color="var(--gold)" strokeWidth={2} />
                 </span>

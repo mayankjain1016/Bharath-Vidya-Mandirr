@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
+import { Medal, Sparkles } from 'lucide-react'
 import './AwardsRecognition.css'
 
+// Import your award images
 import award1 from '../assets/Awards/014989c1-64cf-49cf-bed2-6a1bb29c5206.jfif'
 import award2 from '../assets/Awards/acd335da-9c9f-42e3-b6c7-feb1b98c1986.jfif'
 import award3 from '../assets/Awards/cd975466-5b29-4b34-83b1-9dab46e56f01.jfif'
@@ -17,51 +19,86 @@ const awards = [
   { title: 'Academic Excellence Award', image: award6, desc: 'Celebrated for consistent outstanding performance in board examinations and competitive exams.' },
 ]
 
-const container = {
+// Silky smooth stagger animations
+const containerVariants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
 }
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.55 } },
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
 }
 
 export default function AwardsRecognition() {
+  // Advanced feature: Maps mouse coordinates to CSS variables for hover glow effects
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
+    e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
+  };
+
   return (
-    <section className="awards">
-      <div className="container">
+    <section className="ar-section">
+      {/* Decorative ambient background */}
+      <div className="ar-ambient-glow"></div>
+
+      <div className="ar-container">
+
+        {/* ── HEADER ── */}
         <motion.div
-          className="awards-header"
+          className="ar-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <span className="section-tag">Accolades</span>
-          <h2>Awards &amp; Recognition</h2>
-          <p className="awards-sub">
-            Consistently recognised for excellence in academics, sports, and holistic education
-            by leading educational bodies across Tamil Nadu.
+          <h2>Awards & Recognition</h2>
+          <p className="ar-sub">
+            Consistently recognised for excellence in academics, sports, and holistic education by leading educational bodies across Tamil Nadu.
           </p>
         </motion.div>
 
+        {/* ── AWARDS GRID ── */}
         <motion.div
-          className="awards-grid"
-          variants={container}
+          className="ar-grid"
+          variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
         >
-          {awards.map((a, i) => (
-            <motion.div key={i} className="award-card" variants={item} whileHover={{ scale: 1.03 }}>
-              <div className="award-image">
-                <img src={a.image} alt={a.title} />
+          {awards.map((award, i) => (
+            <motion.div
+              key={i}
+              className="ar-card ar-glow-effect"
+              variants={itemVariants}
+              onMouseMove={handleMouseMove}
+            >
+              {/* Image Area */}
+              <div className="ar-image-wrapper">
+                <img src={award.image} alt={award.title} className="ar-image" loading="lazy" />
+                <div className="ar-image-overlay"></div>
+
+                {/* Floating Glassmorphism Badge */}
+                <div className="ar-badge">
+                  <Medal size={20} strokeWidth={2} />
+                </div>
               </div>
-              <h3 className="award-title">{a.title}</h3>
-              <p className="award-desc">{a.desc}</p>
+
+              {/* Text Content */}
+              <div className="ar-content">
+                <h3 className="ar-title">{award.title}</h3>
+                <p className="ar-desc">{award.desc}</p>
+
+                {/* Subtle decorative line */}
+                <div className="ar-card-line"></div>
+              </div>
             </motion.div>
           ))}
         </motion.div>
+
       </div>
     </section>
   )

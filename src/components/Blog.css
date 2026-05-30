@@ -18,6 +18,9 @@
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, var(--primary) 0%, #0d2847 50%, var(--teal) 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   overflow: hidden;
   padding-top: 80px;
 }
@@ -41,8 +44,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-  opacity: 0.4;
+  background: linear-gradient(135deg, rgba(11, 31, 58, 0.85) 0%, rgba(13, 40, 71, 0.8) 50%, rgba(26, 140, 140, 0.75) 100%);
+  backdrop-filter: blur(2px);
 }
 
 .blog-back {

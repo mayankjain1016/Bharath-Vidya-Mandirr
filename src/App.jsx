@@ -2,7 +2,6 @@ import { useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import StatsBar from './components/StatsBar'
-import AchievementsBanner from './components/AchievementsBanner'
 import SchoolIntroduction from './components/SchoolIntroduction'
 import WhyChooseUs from './components/WhyChooseUs'
 import IntegratedCoaching from './components/IntegratedCoaching'
@@ -18,6 +17,7 @@ import Blog from './components/Blog'
 import AboutUs from './components/AboutUs'
 import Achievements from './components/Achievements'
 import Admissions from './components/Admissions'
+import AchievementsBanner from './components/AchievementsBanner'
 // Custom cursor effects removed - using default system cursor
 function App() {
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false)
@@ -26,10 +26,19 @@ function App() {
   const [isAchievementsOpen, setIsAchievementsOpen] = useState(false)
   const [isAdmissionsOpen, setIsAdmissionsOpen] = useState(false)
 
+  const goHome = () => {
+    setIsBlogOpen(false)
+    setIsAboutOpen(false)
+    setIsAchievementsOpen(false)
+    setIsAdmissionsOpen(false)
+    window.scrollTo(0, 0)
+  }
+
   if (isBlogOpen) {
     return (
       <>
         <Navbar 
+          onHomeClick={goHome}
           onEnquireClick={() => setIsEnquiryOpen(true)}
           onBlogClick={() => setIsBlogOpen(false)}
           onAboutClick={() => { setIsBlogOpen(false); setIsAboutOpen(true); }}
@@ -47,6 +56,7 @@ function App() {
     return (
       <>
         <Navbar 
+          onHomeClick={goHome}
           onEnquireClick={() => setIsEnquiryOpen(true)}
           onBlogClick={() => setIsBlogOpen(true)}
           onAboutClick={() => setIsAboutOpen(false)}
@@ -64,6 +74,7 @@ function App() {
     return (
       <>
         <Navbar 
+          onHomeClick={goHome}
           onEnquireClick={() => setIsEnquiryOpen(true)}
           onBlogClick={() => setIsBlogOpen(true)}
           onAboutClick={() => { setIsAchievementsOpen(false); setIsAboutOpen(true); }}
@@ -81,6 +92,7 @@ function App() {
     return (
       <>
         <Navbar 
+          onHomeClick={goHome}
           onEnquireClick={() => setIsEnquiryOpen(true)}
           onBlogClick={() => setIsBlogOpen(true)}
           onAboutClick={() => { setIsAdmissionsOpen(false); setIsAboutOpen(true); }}
@@ -97,6 +109,7 @@ function App() {
   return (
     <>
       <Navbar 
+        onHomeClick={goHome}
         onEnquireClick={() => setIsEnquiryOpen(true)}
         onBlogClick={() => setIsBlogOpen(true)}
         onAboutClick={() => setIsAboutOpen(true)}
@@ -105,7 +118,7 @@ function App() {
       />
       <main>
         <section id="home"><Hero onEnquireClick={() => setIsEnquiryOpen(true)} /></section>
-        <section id="achievements"><AchievementsBanner /></section>
+        <AchievementsBanner />
         <section id="school-intro"><SchoolIntroduction /></section>
         <section id="about"><WhyChooseUs /></section>
         <section id="coaching"><IntegratedCoaching /></section>

@@ -17,16 +17,6 @@ const galleryImages = [
   { id: 5, src: img5, title: 'Academic Excellence' },
 ]
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } },
-}
-
-const item = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
-  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6 } },
-}
-
 export default function Gallery() {
   return (
     <section className="gallery">
@@ -38,36 +28,34 @@ export default function Gallery() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-tag">
-            <Camera size={14} style={{ display: 'inline', marginRight: 6 }} />
-            Campus Gallery
-          </span>
+
           <h2>Glimpses of Our Campus</h2>
           <p className="gallery-sub">
-            Experience the vibrant life at Bharath Vidya Mandir through our campus moments
+            Experience the vibrant life at Bharath Vidya Mandir through our campus moments.
           </p>
         </motion.div>
 
         <motion.div
           className="gallery-grid"
-          variants={container}
-          initial="hidden"
-          whileInView="show"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
-          {galleryImages.map((image) => (
+          {galleryImages.map((image, index) => (
             <motion.div
               key={image.id}
               className="gallery-item"
-              variants={item}
-              whileHover={{ y: -12, scale: 1.02 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
             >
               <div className="gallery-image-wrapper">
                 <img src={image.src} alt={image.title} className="gallery-image" />
                 <div className="gallery-overlay">
                   <div className="gallery-overlay-content">
-                    <Camera size={32} />
+                    <Camera size={28} />
                     <p className="gallery-title">{image.title}</p>
                   </div>
                 </div>

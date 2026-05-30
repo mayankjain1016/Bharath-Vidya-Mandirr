@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import './StatsBar.css'
+import { Stethoscope, GraduationCap, Users, BookOpen, UserCheck, Trophy } from 'lucide-react'
 
 const stats = [
-  { end: 100,  suffix: '+', label: 'Doctors Produced' },
-  { end: 600,  suffix: '+', label: 'Alumni' },
-  { end: 6000, suffix: '+', label: 'Happy Parents' },
-  { end: 60,   suffix: '+', label: 'Subject Experts' },
-  { end: 70,   suffix: '+', label: 'Well Trained Staff' },
-  { end: 250,  suffix: '+', label: 'State & National Achievers' },
+  { end: 100,  suffix: '+', label: 'Doctors Produced', Icon: Stethoscope },
+  { end: 600,  suffix: '+', label: 'Alumni', Icon: GraduationCap },
+  { end: 6000, suffix: '+', label: 'Happy Parents', Icon: Users },
+  { end: 60,   suffix: '+', label: 'Subject Experts', Icon: BookOpen },
+  { end: 70,   suffix: '+', label: 'Well Trained Staff', Icon: UserCheck },
+  { end: 250,  suffix: '+', label: 'State & National Achievers', Icon: Trophy },
 ]
 
 function Counter({ end, suffix }) {
@@ -41,22 +41,31 @@ function Counter({ end, suffix }) {
 
 export default function StatsBar() {
   return (
-    <div className="stats-bar">
-      <div className="container stats-inner">
-        {stats.map((s, i) => (
-          <motion.div 
-            key={i} 
-            className="stat-item"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-          >
-            <span className="stat-num"><Counter end={s.end} suffix={s.suffix} /></span>
-            <span className="stat-label">{s.label}</span>
-          </motion.div>
-        ))}
+    <section className="relative bg-teal-800 py-10 font-sans shadow-inner">
+      {/* Subtle texture overlay so it's not a flat solid color, but organic */}
+      <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-8 gap-x-4">
+          {stats.map((s, i) => (
+            <motion.div 
+              key={i} 
+              className="flex flex-col items-center justify-center text-center"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
+              <h3 className="text-2xl md:text-3xl font-black text-amber-400 mb-1 drop-shadow-md">
+                <Counter end={s.end} suffix={s.suffix} />
+              </h3>
+              <p className="text-[10px] md:text-xs font-bold text-white uppercase tracking-widest leading-snug">
+                {s.label}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
