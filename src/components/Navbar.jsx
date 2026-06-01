@@ -1,20 +1,21 @@
 import { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import logo from '../assets/BVM logo/BVMLogo.jpeg'
 import './Navbar.css'
 
 const navLinks = [
-  { label: 'Home',                href: '#home', onClick: 'home' },
-  { label: 'About Us',            href: '#about-page', onClick: 'about' },
-  { label: 'Achievements',        href: '#achievements-page', onClick: 'achievements' },
-  { label: 'Integrated Coaching', href: '#coaching', onClick: null },
-  { label: 'Admissions',          href: '#admissions-page', onClick: 'admissions' },
-  { label: 'Blog',                href: '#blog', onClick: 'blog' },
+  { label: 'Home', path: '/' },
+  { label: 'About Us', path: '/about' },
+  { label: 'Achievements', path: '/achievements' },
+  { label: 'Integrated Coaching', path: '/#coaching' },
+  { label: 'Admissions', path: '/admissions' },
+  { label: 'Blog', path: '/blog' },
 ]
 
-export default function Navbar({ onHomeClick, onEnquireClick, onBlogClick, onAboutClick, onAchievementsClick, onAdmissionsClick }) {
-  const [open, setOpen]       = useState(false)
+export default function Navbar({ onEnquireClick }) {
+  const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -22,6 +23,7 @@ export default function Navbar({ onHomeClick, onEnquireClick, onBlogClick, onAbo
       const heroHeight = window.innerHeight * 0.85
       setScrolled(window.scrollY > heroHeight)
     }
+
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -35,53 +37,36 @@ export default function Navbar({ onHomeClick, onEnquireClick, onBlogClick, onAbo
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
         <div className="container nav-inner">
-          {/* Logo */}
-          <button onClick={onHomeClick} className="nav-brand bg-transparent border-none text-left p-0 cursor-pointer">
+          <NavLink to="/" className="nav-brand">
             <img src={logo} alt="BVM Logo" className="nav-logo-img" />
-            <div className="nav-brand-text">
-              <span className="nav-school-name block">Bharath Vidya Mandir</span>
-              <span className="nav-school-sub block">Tenkasi, Tamil Nadu</span>
-            </div>
-          </button>
 
-          {/* Desktop links */}
+            <div className="nav-brand-text">
+              <span className="nav-school-name block">
+                Bharath Vidya Mandir
+              </span>
+              <span className="nav-school-sub block">
+                Tenkasi, Tamil Nadu
+              </span>
+            </div>
+          </NavLink>
+
           <ul className="nav-links">
-            {navLinks.map(l => (
-              <li key={l.href}>
-                {l.onClick === 'home' ? (
-                  <button onClick={onHomeClick} className="nav-link nav-link-btn">
-                    {l.label}
-                  </button>
-                ) : l.onClick === 'blog' ? (
-                  <button onClick={onBlogClick} className="nav-link nav-link-btn">
-                    {l.label}
-                  </button>
-                ) : l.onClick === 'about' ? (
-                  <button onClick={onAboutClick} className="nav-link nav-link-btn">
-                    {l.label}
-                  </button>
-                ) : l.onClick === 'achievements' ? (
-                  <button onClick={onAchievementsClick} className="nav-link nav-link-btn">
-                    {l.label}
-                  </button>
-                ) : l.onClick === 'admissions' ? (
-                  <button onClick={onAdmissionsClick} className="nav-link nav-link-btn">
-                    {l.label}
-                  </button>
-                ) : (
-                  <a href={l.href} className="nav-link">{l.label}</a>
-                )}
+            {navLinks.map((link) => (
+              <li key={link.path}>
+                <NavLink to={link.path} className="nav-link">
+                  {link.label}
+                </NavLink>
               </li>
             ))}
           </ul>
 
-          {/* CTA */}
-          <button onClick={onEnquireClick} className="btn btn-teal nav-cta">Enquire Now</button>
+          <button onClick={onEnquireClick} className="btn btn-teal nav-cta">
+            Enquire Now
+          </button>
 
-          {/* Hamburger */}
           <button
             className="nav-hamburger"
-            onClick={() => setOpen(o => !o)}
+            onClick={() => setOpen((o) => !o)}
             aria-label="Toggle menu"
           >
             {open ? <X size={26} /> : <Menu size={26} />}
@@ -89,7 +74,6 @@ export default function Navbar({ onHomeClick, onEnquireClick, onBlogClick, onAbo
         </div>
       </motion.nav>
 
-      {/* Mobile full-screen menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -100,42 +84,31 @@ export default function Navbar({ onHomeClick, onEnquireClick, onBlogClick, onAbo
             transition={{ duration: 0.3 }}
           >
             <ul className="mobile-links">
-              {navLinks.map((l, i) => (
+              {navLinks.map((link, i) => (
                 <motion.li
-                  key={l.href}
+                  key={link.path}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06 }}
                 >
-                  {l.onClick === 'home' ? (
-                    <button onClick={() => { onHomeClick(); setOpen(false); }} className="mobile-link mobile-link-btn">
-                      {l.label}
-                    </button>
-                  ) : l.onClick === 'blog' ? (
-                    <button onClick={() => { onBlogClick(); setOpen(false); }} className="mobile-link mobile-link-btn">
-                      {l.label}
-                    </button>
-                  ) : l.onClick === 'about' ? (
-                    <button onClick={() => { onAboutClick(); setOpen(false); }} className="mobile-link mobile-link-btn">
-                      {l.label}
-                    </button>
-                  ) : l.onClick === 'achievements' ? (
-                    <button onClick={() => { onAchievementsClick(); setOpen(false); }} className="mobile-link mobile-link-btn">
-                      {l.label}
-                    </button>
-                  ) : l.onClick === 'admissions' ? (
-                    <button onClick={() => { onAdmissionsClick(); setOpen(false); }} className="mobile-link mobile-link-btn">
-                      {l.label}
-                    </button>
-                  ) : (
-                    <a href={l.href} className="mobile-link" onClick={() => setOpen(false)}>
-                      {l.label}
-                    </a>
-                  )}
+                  <NavLink
+                    to={link.path}
+                    className="mobile-link"
+                    onClick={() => setOpen(false)}
+                  >
+                    {link.label}
+                  </NavLink>
                 </motion.li>
               ))}
             </ul>
-            <button onClick={() => { onEnquireClick(); setOpen(false); }} className="btn btn-teal mobile-cta">
+
+            <button
+              onClick={() => {
+                onEnquireClick()
+                setOpen(false)
+              }}
+              className="btn btn-teal mobile-cta"
+            >
               Enquire Now
             </button>
           </motion.div>

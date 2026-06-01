@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import StatsBar from './components/StatsBar'
@@ -18,120 +20,113 @@ import AboutUs from './components/AboutUs'
 import Achievements from './components/Achievements'
 import Admissions from './components/Admissions'
 import AchievementsBanner from './components/AchievementsBanner'
-// Custom cursor effects removed - using default system cursor
+
+function Home({ onEnquireClick }) {
+  return (
+    <main>
+      <section id="home">
+        <Hero onEnquireClick={onEnquireClick} />
+      </section>
+
+      <AchievementsBanner />
+
+      <section id="school-intro">
+        <SchoolIntroduction />
+      </section>
+
+      <section id="about">
+        <WhyChooseUs />
+      </section>
+
+      <section id="coaching">
+        <IntegratedCoaching />
+      </section>
+
+      <section id="awards">
+        <AwardsRecognition />
+      </section>
+
+      <StatsBar />
+
+      <section id="toppers">
+        <BoardToppers />
+      </section>
+
+      <section id="gallery">
+        <Gallery />
+      </section>
+
+      <section id="testimonials">
+        <Testimonials />
+      </section>
+
+      <CallToActionBanner onEnquireClick={onEnquireClick} />
+
+      <section id="faq">
+        <FAQ />
+      </section>
+    </main>
+  )
+}
+
 function App() {
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false)
-  const [isBlogOpen, setIsBlogOpen] = useState(false)
-  const [isAboutOpen, setIsAboutOpen] = useState(false)
-  const [isAchievementsOpen, setIsAchievementsOpen] = useState(false)
-  const [isAdmissionsOpen, setIsAdmissionsOpen] = useState(false)
-
-  const goHome = () => {
-    setIsBlogOpen(false)
-    setIsAboutOpen(false)
-    setIsAchievementsOpen(false)
-    setIsAdmissionsOpen(false)
-    window.scrollTo(0, 0)
-  }
-
-  if (isBlogOpen) {
-    return (
-      <>
-        <Navbar 
-          onHomeClick={goHome}
-          onEnquireClick={() => setIsEnquiryOpen(true)}
-          onBlogClick={() => setIsBlogOpen(false)}
-          onAboutClick={() => { setIsBlogOpen(false); setIsAboutOpen(true); }}
-          onAchievementsClick={() => { setIsBlogOpen(false); setIsAchievementsOpen(true); }}
-          onAdmissionsClick={() => { setIsBlogOpen(false); setIsAdmissionsOpen(true); }}
-        />
-        <Blog onClose={() => setIsBlogOpen(false)} />
-        <Footer />
-        <EnquiryForm isOpen={isEnquiryOpen} onClose={() => setIsEnquiryOpen(false)} />
-      </>
-    )
-  }
-
-  if (isAboutOpen) {
-    return (
-      <>
-        <Navbar 
-          onHomeClick={goHome}
-          onEnquireClick={() => setIsEnquiryOpen(true)}
-          onBlogClick={() => setIsBlogOpen(true)}
-          onAboutClick={() => setIsAboutOpen(false)}
-          onAchievementsClick={() => { setIsAboutOpen(false); setIsAchievementsOpen(true); }}
-          onAdmissionsClick={() => { setIsAboutOpen(false); setIsAdmissionsOpen(true); }}
-        />
-        <AboutUs onEnquireClick={() => setIsEnquiryOpen(true)} />
-        <Footer />
-        <EnquiryForm isOpen={isEnquiryOpen} onClose={() => setIsEnquiryOpen(false)} />
-      </>
-    )
-  }
-
-  if (isAchievementsOpen) {
-    return (
-      <>
-        <Navbar 
-          onHomeClick={goHome}
-          onEnquireClick={() => setIsEnquiryOpen(true)}
-          onBlogClick={() => setIsBlogOpen(true)}
-          onAboutClick={() => { setIsAchievementsOpen(false); setIsAboutOpen(true); }}
-          onAchievementsClick={() => setIsAchievementsOpen(false)}
-          onAdmissionsClick={() => { setIsAchievementsOpen(false); setIsAdmissionsOpen(true); }}
-        />
-        <Achievements onEnquireClick={() => setIsEnquiryOpen(true)} />
-        <Footer />
-        <EnquiryForm isOpen={isEnquiryOpen} onClose={() => setIsEnquiryOpen(false)} />
-      </>
-    )
-  }
-
-  if (isAdmissionsOpen) {
-    return (
-      <>
-        <Navbar 
-          onHomeClick={goHome}
-          onEnquireClick={() => setIsEnquiryOpen(true)}
-          onBlogClick={() => setIsBlogOpen(true)}
-          onAboutClick={() => { setIsAdmissionsOpen(false); setIsAboutOpen(true); }}
-          onAchievementsClick={() => { setIsAdmissionsOpen(false); setIsAchievementsOpen(true); }}
-          onAdmissionsClick={() => setIsAdmissionsOpen(false)}
-        />
-        <Admissions onEnquireClick={() => setIsEnquiryOpen(true)} />
-        <Footer />
-        <EnquiryForm isOpen={isEnquiryOpen} onClose={() => setIsEnquiryOpen(false)} />
-      </>
-    )
-  }
 
   return (
     <>
-      <Navbar 
-        onHomeClick={goHome}
+      <Navbar
         onEnquireClick={() => setIsEnquiryOpen(true)}
-        onBlogClick={() => setIsBlogOpen(true)}
-        onAboutClick={() => setIsAboutOpen(true)}
-        onAchievementsClick={() => setIsAchievementsOpen(true)}
-        onAdmissionsClick={() => setIsAdmissionsOpen(true)}
       />
-      <main>
-        <section id="home"><Hero onEnquireClick={() => setIsEnquiryOpen(true)} /></section>
-        <AchievementsBanner />
-        <section id="school-intro"><SchoolIntroduction /></section>
-        <section id="about"><WhyChooseUs /></section>
-        <section id="coaching"><IntegratedCoaching /></section>
-        <section id="awards"><AwardsRecognition /></section>
-        <StatsBar />
-        <section id="toppers"><BoardToppers /></section>
-        <section id="gallery"><Gallery /></section>
-        <section id="testimonials"><Testimonials /></section>
-        <CallToActionBanner onEnquireClick={() => setIsEnquiryOpen(true)} />
-        <section id="faq"><FAQ /></section>
-      </main>
-      <footer id="contact"><Footer /></footer>
-      <EnquiryForm isOpen={isEnquiryOpen} onClose={() => setIsEnquiryOpen(false)} />
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              onEnquireClick={() => setIsEnquiryOpen(true)}
+            />
+          }
+        />
+
+        <Route
+          path="/about"
+          element={
+            <AboutUs
+              onEnquireClick={() => setIsEnquiryOpen(true)}
+            />
+          }
+        />
+
+        <Route
+          path="/achievements"
+          element={
+            <Achievements
+              onEnquireClick={() => setIsEnquiryOpen(true)}
+            />
+          }
+        />
+
+        <Route
+          path="/admissions"
+          element={
+            <Admissions
+              onEnquireClick={() => setIsEnquiryOpen(true)}
+            />
+          }
+        />
+
+        <Route
+          path="/blog"
+          element={<Blog />}
+        />
+      </Routes>
+
+      <Footer />
+
+      <EnquiryForm
+        isOpen={isEnquiryOpen}
+        onClose={() => setIsEnquiryOpen(false)}
+      />
     </>
   )
 }
