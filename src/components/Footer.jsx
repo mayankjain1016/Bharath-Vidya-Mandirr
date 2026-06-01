@@ -42,13 +42,13 @@ export default function Footer() {
           
           {/* Brand Info - Spans 4 cols on large screens */}
           <motion.div className="lg:col-span-4" {...fadeUp(0)}>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-white p-1 rounded-2xl shadow-xl flex-shrink-0">
-                <img src={logo} alt="BVM Logo" className="w-full h-full object-contain rounded-xl" />
+            <div className="flex items-center gap-5 mb-8">
+              <div className="w-24 h-24 flex-shrink-0 flex items-center justify-center">
+                <img src={logo} alt="BVM Logo" className="max-w-full max-h-full object-contain rounded-xl" />
               </div>
               <div>
                 <h3 className="text-xl font-black text-white leading-tight">Bharath Vidya <br/>Mandir</h3>
-                <span className="text-teal-400 text-xs font-bold uppercase tracking-widest mt-1 block">Inspire. Ignite. Transform.</span>
+                <p className="text-teal-400 text-xs font-bold uppercase tracking-widest mt-1.5">Inspire. Ignite. Transform.</p>
               </div>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-8 pr-4">
@@ -124,7 +124,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-slate-800/60 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-medium text-slate-500">
           <p>© {new Date().getFullYear()} Bharath Vidya Mandir, Tenkasi. All rights reserved.</p>
           <div className="flex gap-4 items-center">
-            <span className="text-slate-600">Developed by <strong className="text-teal-500 font-bold tracking-wider">AFFOBE</strong></span>
+            <span className="text-slate-600">Developed by <a href="https://www.affobe.com/" target="_blank" rel="noopener noreferrer" className="text-teal-500 font-bold tracking-wider hover:text-teal-400 transition-colors">AFFOBE</a></span>
             <span className="w-1 h-1 bg-slate-700 rounded-full mx-1"></span>
             <a href="#" className="hover:text-teal-400 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-teal-400 transition-colors">Terms of Service</a>

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { 
   ArrowLeft, Calendar, User, Clock, ArrowRight, BookOpen,
-  TrendingUp, Mail, Send, Tag, Eye, Heart, Share2, Search
+  TrendingUp, Mail, Send, Eye, Heart, Share2, Search
 } from 'lucide-react'
 import './Blog.css'
 
@@ -110,14 +110,6 @@ const blogPosts = [
   },
 ]
 
-const categories = [
-  { name: 'All', count: 9 },
-  { name: 'Education', count: 3 },
-  { name: 'Success Stories', count: 1 },
-  { name: 'Events', count: 2 },
-  { name: 'Testimonials', count: 1 },
-  { name: 'Academy Updates', count: 2 },
-]
 
 const popularPosts = [
   { id: 1, title: 'Board Exam Results 2024: Record-Breaking Performance', views: '4.5K' },
@@ -136,14 +128,9 @@ const item = {
 }
 
 export default function Blog({ onClose }) {
-  const [selectedCategory, setSelectedCategory] = useState('All')
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
   const [randomHeroImage] = useState(() => heroImages[Math.floor(Math.random() * heroImages.length)])
-
-  const filteredPosts = selectedCategory === 'All' 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category === selectedCategory)
 
   const handleSubscribe = (e) => {
     e.preventDefault()
@@ -158,30 +145,44 @@ export default function Blog({ onClose }) {
 
   return (
     <div className="blog-page">
-      {/* Hero Section */}
-      <section className="blog-hero" style={{ backgroundImage: `url(${randomHeroImage})` }}>
-        <div className="blog-hero-overlay" />
-        <div className="container">
-          <motion.div
-            className="blog-hero-content"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+      {/* Editorial Hero Section */}
+      <section className="bg-white pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+            
+            {/* Text Content */}
             <motion.div
-              className="blog-hero-icon"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="max-w-2xl"
             >
-              <BookOpen size={60} color="var(--white)" strokeWidth={1.5} />
+              <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6">
+                Our <span className="text-teal-600">Blog.</span>
+              </h1>
+              <p className="text-lg md:text-xl text-slate-500 leading-relaxed mb-8">
+                Insights, stories, and updates from Bharath Vidya Mandir. Explore articles on education, student success, and academy news.
+              </p>
             </motion.div>
-            <h1>Our Blog</h1>
-            <p>
-              Insights, stories, and updates from Bharath Vidya Mandir. 
-              Explore articles on education, student success, and academy news.
-            </p>
-          </motion.div>
+
+            {/* Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+              className="relative"
+            >
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 border border-slate-100 shadow-sm">
+                <img 
+                  src={randomHeroImage} 
+                  alt="Blog Hero" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Subtle decorative glow */}
+              <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-teal-50 rounded-full -z-10 blur-3xl opacity-60"></div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -231,30 +232,7 @@ export default function Blog({ onClose }) {
         </div>
       </section>
 
-      {/* Categories */}
-      <section className="blog-section blog-categories-section">
-        <div className="container">
-          <motion.div
-            className="blog-categories"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            {categories.map((cat, i) => (
-              <button
-                key={i}
-                className={`blog-category-btn ${selectedCategory === cat.name ? 'active' : ''}`}
-                onClick={() => setSelectedCategory(cat.name)}
-              >
-                <Tag size={16} />
-                {cat.name}
-                <span className="category-count">{cat.count}</span>
-              </button>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+
 
       {/* Latest Articles */}
       <section className="blog-section blog-articles-section">
@@ -277,7 +255,7 @@ export default function Blog({ onClose }) {
             whileInView="show"
             viewport={{ once: true }}
           >
-            {filteredPosts.map((post) => (
+            {blogPosts.map((post) => (
               <motion.article key={post.id} className="blog-card" variants={item}>
                 <div className="blog-card-image">
                   <div className="blog-card-placeholder">
@@ -402,27 +380,7 @@ export default function Blog({ onClose }) {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="blog-cta">
-        <div className="container">
-          <motion.div
-            className="blog-cta-content"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <h2>Explore More Content</h2>
-            <p>
-              Dive deeper into our collection of articles, stories, and insights. 
-              There's always something new to discover.
-            </p>
-            <button className="btn btn-white-teal">
-              View All Articles <ArrowRight size={18} />
-            </button>
-          </motion.div>
-        </div>
-      </section>
+
     </div>
   )
 }

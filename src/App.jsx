@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -11,6 +11,7 @@ import AwardsRecognition from './components/AwardsRecognition'
 import BoardToppers from './components/BoardToppers'
 import Gallery from './components/Gallery'
 import Testimonials from './components/Testimonials'
+
 import CallToActionBanner from './components/CallToActionBanner'
 import FAQ from './components/FAQ'
 import Footer from './components/Footer'
@@ -56,11 +57,14 @@ function Home({ onEnquireClick }) {
         <Gallery />
       </section>
 
-
       <CallToActionBanner onEnquireClick={onEnquireClick} />
 
       <section id="faq">
         <FAQ />
+      </section>
+
+      <section id="testimonials">
+        <Testimonials />
       </section>
     </main>
   )
@@ -68,6 +72,7 @@ function Home({ onEnquireClick }) {
 
 function App() {
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false)
+  const location = useLocation()
 
   return (
     <>
@@ -118,9 +123,6 @@ function App() {
         />
       </Routes>
 
-      <section id="testimonials">
-        <Testimonials />
-      </section>
 
       <Footer />
 
