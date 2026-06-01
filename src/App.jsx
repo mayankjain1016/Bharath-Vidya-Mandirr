@@ -56,9 +56,6 @@ function Home({ onEnquireClick }) {
         <Gallery />
       </section>
 
-      <section id="testimonials">
-        <Testimonials />
-      </section>
 
       <CallToActionBanner onEnquireClick={onEnquireClick} />
 
@@ -120,6 +117,10 @@ function App() {
           element={<Blog />}
         />
       </Routes>
+
+      <section id="testimonials">
+        <Testimonials />
+      </section>
 
       <Footer />
 

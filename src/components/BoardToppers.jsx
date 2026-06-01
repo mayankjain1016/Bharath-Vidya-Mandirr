@@ -4,9 +4,9 @@ import { Award, ChevronLeft, ChevronRight } from 'lucide-react'
 
 // Import topper images
 import topper10th_1 from '../assets/BoardTopper/Topper10th_1.jfif'
-import topper10th_2 from '../assets/BoardTopper/Topper10th_2.jpeg'
+import topper10th_2 from '../assets/BoardTopper/Topper10th_2.jfif'
 import topper10th_3 from '../assets/BoardTopper/Topper10th_3.jfif'
-import topper12th_1 from '../assets/BoardTopper/Topper12th_1.jpeg'
+import topper12th_1 from '../assets/BoardTopper/Topper12th_1.jfif'
 import topper12th_2 from '../assets/BoardTopper/Topper12th_2.jpeg'
 import topper12th_3 from '../assets/BoardTopper/Topper12th_3.jpeg'
 
