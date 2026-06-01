@@ -36,14 +36,14 @@ export default function Navbar({ onEnquireClick }) {
           ? 'bg-white/95 backdrop-blur-xl border-b border-slate-200/50 shadow-[0_2px_20px_rgba(0,0,0,0.02)] py-0' 
           : 'bg-transparent border-transparent py-2'
       }`}>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 h-24 flex items-center justify-between">
           
           {/* Brand */}
           <NavLink to="/" className="flex items-center gap-4 group">
             <img 
               src={logo} 
               alt="BVM Logo" 
-              className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+              className="h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
             />
             <div className="hidden sm:flex flex-col">
               <span className={`font-extrabold text-[1.1rem] leading-tight tracking-tight transition-colors duration-300 ${isTransparentOnHome ? 'text-white' : (isScrolled ? 'text-slate-900' : 'text-teal-600')}`}>

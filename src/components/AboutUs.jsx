@@ -385,11 +385,15 @@ export default function AboutUs({ onEnquireClick }) {
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-12"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
             variants={containerVariants} initial="hidden" whileInView="show" viewport={{ once: true }}
           >
             {whyChoose.map(({ Icon, title, desc }, i) => (
-              <motion.div key={i} variants={itemVariants} className="flex flex-col">
+              <motion.div 
+                key={i} 
+                variants={itemVariants} 
+                className="flex flex-col p-8 rounded-3xl transition-all duration-300 hover:bg-white hover:shadow-xl hover:shadow-teal-900/5 border border-transparent hover:border-slate-100 hover:-translate-y-1 cursor-pointer"
+              >
                 <Icon size={32} strokeWidth={1.5} className="text-teal-600 mb-6" />
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{title}</h3>
                 <p className="text-slate-600 leading-relaxed">{desc}</p>
